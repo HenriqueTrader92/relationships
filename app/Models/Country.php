@@ -19,4 +19,10 @@ class Country extends Model
     {
         return $this->hasMany(State::class);
     }
+
+    // Comunicação hasManyThrough
+    public function cities()
+    {
+        return $this->hasManyThrough(City::class, State::class);
+    }
 }
