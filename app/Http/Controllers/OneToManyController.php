@@ -12,13 +12,13 @@ class OneToManyController extends Controller
     {
         // $country = Country::where('name', 'Brasil')->get()->first();
         $keySearch = 'a';
-        $countries = Country::where('name', 'LIKE', "%{$keySearch}%")->get();
+        $countries = Country::where('name', 'LIKE', "%{$keySearch}%")->get(); 
 
         foreach($countries as $country){
 
             echo "<b>{$country->name}</b>";
 
-            $states = $country->states;
+            $states = $country->states; // Lembrar de depois usar o 'with()' na primeira consulta
 
             foreach($states as $state){
                 echo"<br>{$state->initials} - {$state->name}";
@@ -37,5 +37,29 @@ class OneToManyController extends Controller
 
         $country = $state->country;
         echo "<br>Pais: {$country->name}";
+    }
+
+    public function oneToManyTwo()
+    {
+        // $country = Country::where('name', 'Brasil')->get()->first();
+        $keySearch = 'a';
+        $countries = Country::where('name', 'LIKE', "%{$keySearch}%")->get(); 
+
+        foreach($countries as $country){
+
+            echo "<b>{$country->name}</b>";
+
+            $states = $country->states; // Lembrar de depois usar o 'with()' na primeira consulta
+
+            foreach($states as $state){
+                echo"<br>{$state->initials} - {$state->name}:";
+
+                foreach($state->cities as $city){
+                    echo" {$city->name}, ";
+                }
+            }
+
+            echo '<hr>';
+        }
     }
 }
