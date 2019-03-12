@@ -30,4 +30,28 @@ class ManyToManyController extends Controller
         }
 
     }
+
+    public function manyToManyInsert()
+    {
+        //Pegou as cidades
+        $dataForm = [3,4,5];
+
+        //Pegou a empresa
+        $company = Company::find(1);
+        echo "<b>{$company->name}</b><br>";
+
+        //Vincula as cidades, sempre adicionando mais
+        // $company->cities()->attach($dataForm);
+
+        // Remover vinculos
+        //$company->cities()detach();
+
+        //Vinculou as cidades a empresa 1
+        $company->cities()->sync($dataForm);
+
+        $cities = $company->cities;
+        foreach($cities as $city){
+            echo " {$city->name} ";
+        }
+    }
 }
