@@ -12,6 +12,14 @@ class PolymorphicController extends Controller
 {
     public function Polymorphic()
     {
+        $city = City::where('name', 'Fortaleza')->get()->first();
+        echo "<b>{$city->name}</b><br>";
+
+        $comments = $city->comments()->get();
+
+        foreach($comments as $comment){
+            echo "{$comment->description}<hr>";
+        };
 
     }
 
