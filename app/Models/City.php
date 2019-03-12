@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-    //
+    //Retornar todas empresas de uma determinada cidade
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class, 'company_city');
+    }
 }
