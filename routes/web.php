@@ -20,6 +20,10 @@ Route::get('many-to-many', 'ManyToManyController@manyToMany');
 Route::get('many-to-many-inverse', 'ManyToManyController@manyToManyInverse');
 Route::get('many-to-many-insert', 'ManyToManyController@manyToManyInsert');
 
+// Polymorphic
+Route::get('Polymorphics', 'PolymorphicController@Polymorphic');
+
+
 Route::get('/', function () {
     return view('welcome');
 });
